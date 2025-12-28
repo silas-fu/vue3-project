@@ -124,52 +124,6 @@ $button-sizes: (
   }
 }
 
-
-// 自訂斷點
-$breakpoints: (
-  'mobile': 0,
-  'tablet': 768px,
-  'desktop': 1024px,
-  'wide': 1440px
-);
-
-// 斷點 mixin
-// min-width（大於等於）
-@mixin respond-to($breakpoint) {
-  $value: map-get($breakpoints, $breakpoint);
-  
-  @if $value == 0 {
-    @content;
-  } @else {
-    @media (min-width: $value) {
-      @content;
-    }
-  }
-}
-
-// max-width（小於）- 注意這裡減 1px
-@mixin respond-below($breakpoint) {
-  $value: map-get($breakpoints, $breakpoint);
-  
-  @if $value == 0 {
-  } @else {
-    @media (max-width: $value - 1px) {
-      @content;
-    }
-  }
-}
-
-
-// 範圍
-@mixin respond-between($min-breakpoint, $max-breakpoint) {
-  $min-value: map-get($breakpoints, $min-breakpoint);
-  $max-value: map-get($breakpoints, $max-breakpoint);
-  
-  @media (min-width: $min-value) and (max-width: $max-value - 1px) {
-    @content;
-  }
-}
-
 // 使用方法
 // @each $breakpoint, $value in $breakpoints {
 //   @include respond-to($breakpoint) {
