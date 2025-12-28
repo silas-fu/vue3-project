@@ -1,1 +1,16 @@
-
+@mixin size ($width,$height:$width) {
+    width: $width;
+    height: $height;
+}
+@mixin font-style ($size,$color){
+    font-size: $size;
+    color: $color;
+}
+@mixin bg-img ($url){
+    background-image: ($url);
+}
+@mixin bg-setting($pos, $size) {
+    background-position: $pos;
+    background-size: $size;
+    background-repeat: no-repeat;
+}
