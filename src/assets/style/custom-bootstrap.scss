@@ -1,0 +1,10 @@
+// ========================================
+// 主要的 Bootstrap 自訂檔案
+// ========================================
+
+// 1. 首先引入你的變數覆寫（必須在 Bootstrap 之前）
+@import './variables';
+// 2. 引入 Bootstrap（這會使用你覆寫的變數）
+@import 'bootstrap/scss/bootstrap';
+// 3. 最後引入你的自訂樣式（可以使用 Bootstrap 的變數和 mixins）
+@import './custom';
