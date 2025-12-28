@@ -3,10 +3,11 @@ import { ref, computed } from 'vue'
 import type { Todo } from '@/type/todo'
 
 export const useTodoStore = defineStore('todo', () => {
+  // pinia state
   const todos = ref<Todo[]>([]) // 存儲所有待辦事項的陣列
   const nextId = ref(1)         // 下一個 Todo 的 ID
 
-  // computed
+  // pinia getter
   const totalTodos = computed(() => todos.value.length)
   const completedTodos = computed(() => todos.value.filter(todo => todo.completed).length)
   const activeTodos = computed(() => todos.value.filter(todo => !todo.completed).length)
@@ -18,6 +19,7 @@ export const useTodoStore = defineStore('todo', () => {
    * 添加到 todos 陣列
    * ID 自動遞增
    */
+  // pinia action
   function addTodo(text: string) {
     if (text.trim() === '') return // 排除空字串
 
