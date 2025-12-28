@@ -68,7 +68,7 @@ $button-sizes: (
 @each $name, $shades in $button-colors {
   .custom-btn-#{$name} {
     @extend .custom-btn;
-    
+
     background-color: map-get($shades, 'base');
     border-color: map-get($shades, 'base');
     color: map-get($shades, 'text');
@@ -121,5 +121,92 @@ $button-sizes: (
     padding: map-get($sizes, 'padding-y') map-get($sizes, 'padding-x');
     font-size: map-get($sizes, 'font-size');
     border-radius: map-get($sizes, 'border-radius');
+  }
+}
+
+
+// 自訂斷點
+$breakpoints: (
+  'mobile': 0,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'wide': 1440px
+);
+
+// 斷點 mixin
+// min-width（大於等於）
+@mixin respond-to($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+  
+  @if $value == 0 {
+    @content;
+  } @else {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+// max-width（小於）- 注意這裡減 1px
+@mixin respond-below($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+  
+  @if $value == 0 {
+  } @else {
+    @media (max-width: $value - 1px) {
+      @content;
+    }
+  }
+}
+
+
+// 範圍
+@mixin respond-between($min-breakpoint, $max-breakpoint) {
+  $min-value: map-get($breakpoints, $min-breakpoint);
+  $max-value: map-get($breakpoints, $max-breakpoint);
+  
+  @media (min-width: $min-value) and (max-width: $max-value - 1px) {
+    @content;
+  }
+}
+
+// 使用方法
+// @each $breakpoint, $value in $breakpoints {
+//   @include respond-to($breakpoint) {
+//     @if $breakpoint == 'mobile' {
+//       .d-#{$breakpoint}-block { display: block; }
+//       .d-#{$breakpoint}-none { display: none; }
+//     } @else {
+//       .d-#{$breakpoint}-block { display: block; }
+//       .d-#{$breakpoint}-none { display: none; }
+//     }
+//   }
+// }
+
+.special-layout {
+  // 只在平板到桌面之間套用
+  @include respond-between('tablet', 'desktop') {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.button {
+  // 手機版（預設）
+  @include respond-to('mobile') {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  // 平板以上
+  @include respond-to('tablet') {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  // 桌面以上
+  @include respond-to('desktop') {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
   }
 }
