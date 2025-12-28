@@ -1,3 +1,99 @@
-body {}
-button {}
-a {}
+.scroll-parent {
+    position: relative;
+    overflow: hidden
+}
+
+.scroll-x-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -17px;
+    left: 0;
+    overflow-x: scroll;
+    overflow-y: hidden
+}
+
+.hidden-offscreen {
+    position: absolute;
+    left: -9999px
+}
+
+.text-unshow {
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap
+}
+
+.no-place {
+    position: absolute;
+    top: -100%;
+    left: -100%
+}
+
+.event-none {
+    pointer-events: none
+}
+
+body {
+    position: relative;
+    background-color: #f4f4f6
+}
+
+img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0
+}
+
+ul li {
+    list-style: none
+}
+
+button {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: transparent;
+    border: none;
+}
+
+button:focus {
+    box-shadow: none!important
+}
+
+a,
+a:active,
+a:hover {
+    text-decoration: none
+}
+
+select:not([multiple]) {
+    background-image: url(https://ik.imagekit.io/1pzxddx3qqv/Z54IV3/static/03/kb/arrow-down.png);
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(201,206,217,.05);
+    border-radius: 1.5625rem
+}
+
+img:not([src]) {
+    visibility: hidden
+}
