@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import TodoList from '../components/TodoList.vue';
+import TodoList from '../components/todo/TodoList.vue';
 </script>
 <style scoped>
 .todo-view {
