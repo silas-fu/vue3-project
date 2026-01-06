@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Todo } from '../type/todo'
+import type { Todo } from '@/type/todo'
 
 interface Props {
   todo: Todo
